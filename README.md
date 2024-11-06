@@ -9,7 +9,9 @@
  - **SPA(Single Page Application)**
     - 하나의 페이지 안에서 필요한 영역 부분만 로딩되는 형태
     - 빠른 페이지 변환과 적은 트래픽이 장점
-
+ - **Lifecycle Diagram (공식사이트 이미지)**
+ <img src="./scan/lifecycle.png" width="800"/>  
+ 
  ## 2. Vue vs React
  - **Vue**
     - 직관적인 API와 반응성을 강조
@@ -59,18 +61,19 @@
 ## 7. BootstrapVue 설치하기
  - Bootstrap은 웹 개발을 위한 오픈 소스 프론트엔드 프레임워크
  - [공식 사이트](https://bootstrap-vue.org/)에서 컴포넌트 예시 확인 가능
- - `npm install vue bootstrap bootstrap-vue` 명령으로 설치
+ - `npm install bootstrap-vue-3` 명령으로 설치(Vue3의 문법이 다르기에 중요함)
+ - 실수로 이전 버전을 설치한 경우 `npm outdated bootstrap-vue` 실행하여 제거
+
+## 8. Component 구성하기
+ - 📁 src\components 경로에 layout 폴더 생성 
+ - layout 폴더에 Header.vue 파일 생성  
+ - Header에는 Bootstrap에서 제공하는 NabBar를 설정
 
 ## 8. Router 설치하기
  - **Router**는 웹 애플리케이션의 URL과 컴포넌트를 매핑하여 페이지 간의 전환을 관리
- - `npm install vue-router --save` 명령을 실행하여 설치
+ - `npm i vue-router@next --save` 명령을 실행하여 설치
  
 ## 9. Router 구성하기
  - 📁 src\components 경로에 layout 폴더 생성 
  - layout 폴더에 Header.vue 파일 생성  
  
-
-<br/>  
-<br/>  
-
-출처 : [한시간만에 끝내는 Vue.js입문=유튜브](https://youtu.be/sqH0u8wN4Rs?si=E0vuKs3Is6MfqzmF)

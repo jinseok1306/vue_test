@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
-import Vue from 'vue'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import App from './App.vue'
+import BootstrapVue3 from 'bootstrap-vue-3'
 import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue-3/dist/bootstrap-vue-3.css'
+import App from './App.vue'
+import router from './routers'
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
-
-createApp(App).mount('#app')
+const app = createApp(App)
+app.use(router)  // router 추가
+app.use(BootstrapVue3);  // bootstrap3 추가
+app.mount('#app')
