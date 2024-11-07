@@ -64,16 +64,89 @@
  - `npm install bootstrap-vue-3` 명령으로 설치(Vue3의 문법이 다르기에 중요함)
  - 실수로 이전 버전을 설치한 경우 `npm outdated bootstrap-vue` 실행하여 제거
 
-## 8. Component 구성하기
- - 📁 src\components 경로에 layout 폴더 생성 
- - layout 폴더에 Header.vue 파일 생성  
- - Header에는 Bootstrap에서 제공하는 NabBar를 설정
+## 8. View 구성하기
+ - 📁 src 경로에 views 폴더 생성 
+ - 📁 src/views 경로에 Home, About 화면 생성 (export 시 name을 한 단어로 지정하면 오류 발생)
+ ```vue
+<template>
+    <div>
+        <h1>Welecome to Home!</h1>
+    </div>
+</template>
+<script>
+export default {
+    name: "Vue_Home",
+}
+</script>
+
+ ```
+ ```vue
+<template>
+    <div>
+        <h1>Welecome to About!!</h1>
+    </div>
+</template>
+<script>
+export default {
+    name: "Vue_About",
+}
+</script>
+ ```
 
 ## 8. Router 설치하기
  - **Router**는 웹 애플리케이션의 URL과 컴포넌트를 매핑하여 페이지 간의 전환을 관리
  - `npm i vue-router@next --save` 명령을 실행하여 설치
- 
-## 9. Router 구성하기
+ - 📁 src 경로에 routers 폴더 생성 
+ - 📁 src\routers 경로에 index.js 생성
+ ```js
+import { createWebHistory, createRouter } from "vue-router";
+
+// 연결할 각 컴포넌트 import
+import Vue_Home from "../views/Home";
+import Vue_About from "../views/About";
+
+// 라우터 설계
+const routes = [
+    { path: '/', component:Vue_Home},
+    { path: '/about', component:Vue_About}
+]
+
+// 라우터 생성
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+});
+
+// 라우터 추출 (main.js에서 import)
+export default router
+ ```
+
+## 9. Navbar Header 구성하기
  - 📁 src\components 경로에 layout 폴더 생성 
  - layout 폴더에 Header.vue 파일 생성  
- 
+ - Header에는 Bootstrap에서 제공하는 NavBar를 활용하여 생성
+ ```vue
+ <template>
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>      
+          <b-nav-item><b-link :to="{ path: '/' }">Home</b-link></b-nav-item>    
+          <b-nav-item><b-link :to="{ path: '/about' }">About</b-link></b-nav-item>                        
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
+</template>
+<script>
+export default {
+  name: "Vue_Header",
+};
+</script>
+
+ ```
+ <img src="./scan/navbar.png" width="800"/>
